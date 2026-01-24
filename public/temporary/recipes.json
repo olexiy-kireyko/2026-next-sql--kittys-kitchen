@@ -1,0 +1,22 @@
+[
+  {
+    "id": "qwer1",
+    "title": "Great cake",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit suscipit enim saepe explicabo perferendis vero, ipsum assumenda natus eos! Quibusdam nihil commodi voluptate magni sed excepturi porro nam ipsa cupiditate.",
+    "image1URL": "/recipes-images/qwer1.jpg",
+    "videoURL": "",
+    "ing1_id": "",
+    "ing1_amount": "",
+    "ing1_unit_measurement": "",
+    "ing2_id": "",
+    "ing2_amount": "",
+    "ing2_unit_measurement": "",
+    "ing10_id": "",
+    "ing10_amount": "",
+    "ing10_unit_measurement": "",
+    "author_id": "",
+    "created_date": "10/10/2020",
+    "last_edit_date": "12/10/2021",
+    "pins": 5
+  }
+]
