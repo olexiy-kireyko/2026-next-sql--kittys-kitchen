@@ -24,24 +24,24 @@ export default function RecipeCard({
   const user = `${user_first_name} ${user_last_name}`;
 
   return (
-    <li>
+    <li className="m-1 flex flex-col gap-2 mt-2 max-w-80 rounded-sm bg-blue-950 px-1 py-2">
       <Image
-        className=""
-        width={100}
-        height={100}
+        className="rounded-sm self-center"
+        width={300}
+        height={300}
         src={dish_src}
         alt={dish_alt}
       />
-      <p>{dish_title}</p>
-      <div>
+      <p className="text-zinc-200 text-2xl">{dish_title}</p>
+      <div className="flex gap-2 max-w-1/1 align-middle">
         <Image className="" width={20} height={20} src={user_src} alt={user} />
-        <p>{user}</p>
-        <p>{creating_date}</p>
-        <div>
+        <p className="text-base">{user}</p>
+        <p className="text-gray-400 italic">{creating_date}</p>
+        <div className="ml-15 flex gap-2">
           <Image
-            className=""
-            width={16}
-            height={16}
+            className="rotate-45 shrink-0"
+            width={20}
+            height={8}
             src="/rolling-pin.svg"
             alt="pins"
           />
