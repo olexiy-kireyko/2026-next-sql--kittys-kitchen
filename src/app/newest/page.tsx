@@ -14,10 +14,10 @@ export default function Newest() {
 
   return (
     <div>
-      <main>
+      <main className="m-4 flex flex-col items-center">
         <div>Newest recipes</div>
         <div></div>
-        <ul>
+        <ul className=" m-auto grid grid-cols-4 gap-x-3 gap-y-5">
           {recipes.map(({ id, title, image1URL, created_date, pins }) => (
             <RecipeCard
               key={id}
