@@ -21,6 +21,7 @@ export default function Newest() {
           {recipes.map(({ id, title, image1URL, created_date, pins }) => (
             <RecipeCard
               key={id}
+              id={id}
               dish_src={image1URL}
               dish_alt={title}
               dish_title={title}
