@@ -2,6 +2,7 @@ import Image from "next/image";
 import Ingredient from "./ingredient";
 import AuthorData from "./author-data";
 import { useState } from "react";
+import IngredientsBox from "./ingredients-box";
 
 export interface IngredientsProps {
   ingredient_id: string;
@@ -55,8 +56,7 @@ export default function Recipe({
   const user = `${user_first_name} ${user_last_name}`;
   const avg_pins =
     comments.reduce((acc, item) => (acc += item.pins), 0) / comments.length;
-  const [isCalculate, setIsCalculate] = useState(false);
-  const handlerIsCalculate = () => setIsCalculate(!isCalculate);
+
   return (
     <div className="m-1 flex flex-col  mt-2 max-w-360 rounded-sm bg-slate-900  px-4 py-2">
       <section className="flex justify-between">
@@ -70,31 +70,7 @@ export default function Recipe({
             {id}
             {title}
           </p>
-
-          <p>Ingredients:</p>
-          <div className="flex gap-6">
-            <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
-              <Image
-                onClick={handlerIsCalculate}
-                width={32}
-                height={32}
-                src="/calculator.svg"
-                alt="calculator"
-              />
-            </div>
-            <ul>
-              {ingredients.map((item) => (
-                <li key={item.ingredient_id} className="grid grid-cols-2">
-                  <div>{isCalculate && <input />}</div>
-                  <Ingredient
-                    ingredient={item.ingredient}
-                    amount={item.amount}
-                    unit_measurement={item.unit_measurement}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <IngredientsBox ingredients={ingredients} />
           <p>{description}</p>
         </div>
         <div className="flex flex-col gap-2">
