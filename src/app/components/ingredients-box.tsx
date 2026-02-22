@@ -8,17 +8,37 @@ interface IngredientsBoxProps {
 }
 
 export default function IngredientsBox({ ingredients }: IngredientsBoxProps) {
+  const originalIngredients = ingredients.map((item) => item.amount);
+
   const [isCalculate, setIsCalculate] = useState(false);
-  const [ingredientsForRecalc, setIngredientsForRecalc] = useState([]);
+  const [ingredientsForRecalc, setIngredientsForRecalc] =
+    useState(originalIngredients);
+
   const handlerIsCalculate = () => {
-    const originalIngredients = ingredients.map((item) => item.amount);
-    setIngredientsForRecalc(originalIngredients);
     setIsCalculate(!isCalculate);
     // localStorage.setItem("ingredients", JSON.stringify(ingredients));
   };
 
   const handlerChange = (i, value) => {
-    console.log(i, value);
+    console.log("i:", i);
+    console.log("value:", value);
+    // if (value === 0) {
+    //   setIngredientsForRecalc((prev) => ingredients.map((item) => 0));
+    //   return;
+    // }
+    const k = ingredients[i].amount / value;
+    const recalcIngredients = ingredients
+      .map((item) => item.amount)
+      .map((item, j) => {
+        if (j !== i) {
+          item = item / k;
+        } else {
+          item = value;
+        }
+        return item;
+      });
+
+    setIngredientsForRecalc(recalcIngredients);
   };
 
   // const handlerCalculate = (e) => {
@@ -69,10 +89,10 @@ export default function IngredientsBox({ ingredients }: IngredientsBoxProps) {
                       // onClick={handlerCalculate}
                     >
                       <input
-                        type="number"
-                        value={item}
+                        type="text"
+                        value={+item}
                         className="border-amber-500 bg-blue-600 w-full h-full px-2 rounded-sm"
-                        onChange={(e) => handlerChange(i, e.target.value)}
+                        onChange={(e) => handlerChange(i, +e.target.value)}
                       />
                     </div>
                   )}
