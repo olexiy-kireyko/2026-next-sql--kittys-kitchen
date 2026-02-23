@@ -47,20 +47,20 @@ export default function Page({ params }: PageProps) {
             },
             {
               ingredient_id: "zxc2",
-              ingredient: "sugar",
+              ingredient: "salt",
               amount: 50,
               unit_measurement: "kg",
             },
             {
               ingredient_id: "zxc3",
-              ingredient: "sugar",
-              amount: 40,
+              ingredient: "flour",
+              amount: 60,
               unit_measurement: "kg",
             },
             {
               ingredient_id: "zxc4",
-              ingredient: "sugar",
-              amount: 50,
+              ingredient: "honey",
+              amount: 100,
               unit_measurement: "kg",
             },
           ]}

@@ -16,91 +16,80 @@ export default function IngredientsBox({ ingredients }: IngredientsBoxProps) {
 
   const handlerIsCalculate = () => {
     setIsCalculate(!isCalculate);
-    // localStorage.setItem("ingredients", JSON.stringify(ingredients));
   };
 
   const handlerChange = (i, value) => {
-    console.log("i:", i);
-    console.log("value:", value);
-    // if (value === 0) {
-    //   setIngredientsForRecalc((prev) => ingredients.map((item) => 0));
-    //   return;
-    // }
-    const k = ingredients[i].amount / value;
-    const recalcIngredients = ingredients
-      .map((item) => item.amount)
-      .map((item, j) => {
-        if (j !== i) {
-          item = item / k;
-        } else {
-          item = value;
-        }
-        return item;
-      });
+    const k = originalIngredients[i] / value;
+    const recalcIngredients = originalIngredients.map((item, j) => {
+      if (j !== i) {
+        item = item / k;
+      } else {
+        item = value;
+      }
+      return item;
+    });
 
     setIngredientsForRecalc(recalcIngredients);
   };
 
-  // const handlerCalculate = (e) => {
-  //   const id = e.target.dataset.id;
-
-  //   console.log(id);
-  // };
-
   return (
     <>
-      <p>Ingredients:</p>
-      <p>original proportions:</p>
-
-      <div className="flex gap-4">
-        <ul className="flex flex-col gap-2">
-          {ingredients.map((item) => (
-            <li
-              key={item.ingredient_id}
-              className="grid grid-cols-2 gap-x-2 gap-y-3"
-            >
-              <Ingredient
-                ingredient={item.ingredient}
-                amount={item.amount}
-                unit_measurement={item.unit_measurement}
-              />
-            </li>
-          ))}
-        </ul>
-        <div className="flex gap-6">
-          <div className="w-8 h-8 flex items-center justify-center overflow-hidden cursor-pointer">
-            <Image
-              onClick={handlerIsCalculate}
-              width={32}
-              height={32}
-              src="/calculator.svg"
-              alt="calculator"
-              title="Click here to open recalculate menu"
-            />
-          </div>
+      <div className="flex gap-34">
+        <p>Ingredients:</p>
+        <div className="w-8 h-8 flex items-center justify-center overflow-hidden cursor-pointer">
+          <Image
+            onClick={handlerIsCalculate}
+            width={32}
+            height={32}
+            src="/calculator.svg"
+            alt="calculator"
+            title="Click here to open recalculate menu"
+          />
+        </div>
+      </div>
+      <div className="flex gap-2">
+        <div className="flex flex-col gap-4">
+          <p>original proportions:</p>
           <ul className="flex flex-col gap-2">
-            {ingredientsForRecalc.map((item, i) => (
-              <li key={i} className="grid grid-cols-2 gap-x-2 gap-y-3">
-                <div className="w-24">
-                  {isCalculate && (
-                    <div
-                      className="flex gap-2 cursor-pointer"
-                      // data-id={item}
-                      // onClick={handlerCalculate}
-                    >
-                      <input
-                        type="text"
-                        value={+item}
-                        className="border-amber-500 bg-blue-600 w-full h-full px-2 rounded-sm"
-                        onChange={(e) => handlerChange(i, +e.target.value)}
-                      />
-                    </div>
-                  )}
-                </div>
+            {ingredients.map((item) => (
+              <li
+                key={item.ingredient_id}
+                className="grid grid-cols-2 gap-x-2 gap-y-3"
+              >
+                <Ingredient
+                  ingredient={item.ingredient}
+                  amount={item.amount}
+                  unit_measurement={item.unit_measurement}
+                />
               </li>
             ))}
           </ul>
         </div>
+        {isCalculate && (
+          <div className="flex flex-col gap-4">
+            <p>recalculated proportions:</p>
+            <ul className="flex flex-col gap-2">
+              {ingredientsForRecalc.map((item, i) => (
+                <li key={i} className="grid grid-cols-2 gap-x-2 gap-y-3">
+                  <ul className="flex list-none gap-2">
+                    <li>
+                      <div className="w-24">
+                        <input
+                          type="text"
+                          value={+item}
+                          className=" bg-blue-600 w-full h-full px-2 rounded-sm"
+                          onChange={(e) => handlerChange(i, +e.target.value)}
+                        />
+                      </div>
+                    </li>
+                    <li>{ingredients[i].unit_measurement}</li>
+                    <li>{ingredients[i].ingredient}</li>
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </>
   );
