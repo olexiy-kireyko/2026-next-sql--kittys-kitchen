@@ -23,7 +23,7 @@ export interface PageProps {
 // }
 
 export default function Page({ params }: PageProps) {
-  //get Recipe props logic
+  //will add - get Recipe props logic
   const { id } = React.use(params);
   return (
     <div className="flex justify-center">
@@ -37,7 +37,7 @@ export default function Page({ params }: PageProps) {
             "/temporary/users-images/cat.png",
             "/temporary/users-images/cat.png",
           ]}
-          videoURL=""
+          videoURL="https://www.youtube.com/watch?v=7poalLftnGM"
           ingredients={[
             {
               ingredient_id: "zxc1",

@@ -3,6 +3,10 @@ import Ingredient from "./ingredient";
 import AuthorData from "./author-data";
 import { useState } from "react";
 import IngredientsBox from "./ingredients-box";
+import React from "react";
+import ReactPlayer from "react-player";
+import { LuVideo } from "react-icons/lu";
+import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 
 export interface IngredientsProps {
   ingredient_id: string;
@@ -94,8 +98,31 @@ export default function Recipe({
       </section>
 
       <section>
-        {videoURL && <p>Video???</p>}
-        {images && <p>small images???</p>}
+        {videoURL && (
+          <div className="flex gap-4">
+            <LuVideo />
+            <ReactPlayer
+              src={videoURL}
+              controls={true}
+              width={320}
+              height={180}
+            />
+          </div>
+        )}
+        {images && (
+          <div className="flex gap-4">
+            <MdOutlinePhotoSizeSelectActual />
+            <ul className="flex gap-4">
+              {images.map((item, i) => (
+                <li key={i}>
+                  <div className="w-8 h-8 flex items-center justify-center overflow-hidden cursor-pointer">
+                    <Image width={32} height={32} src={item} alt="calculator" />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         {comments && <p>comments???</p>}
       </section>
     </div>

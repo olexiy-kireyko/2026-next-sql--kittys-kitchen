@@ -18,7 +18,7 @@ export default function IngredientsBox({ ingredients }: IngredientsBoxProps) {
     setIsCalculate(!isCalculate);
   };
 
-  const handlerChange = (i, value) => {
+  const handlerChange = (i: number, value: number) => {
     const k = originalIngredients[i] / value;
     const recalcIngredients = originalIngredients.map((item, j) => {
       if (j !== i) {
