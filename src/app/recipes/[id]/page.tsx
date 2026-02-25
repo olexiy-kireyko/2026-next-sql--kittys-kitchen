@@ -67,7 +67,7 @@ export default function Page({ params }: PageProps) {
           user_first_name="Stub Adam"
           user_last_name="Doe"
           user_imageURL="/temporary/users-images/cat.png"
-          is_user_favourite={true}
+          is_user_favourite={false}
           creating_date="Stub1/1/2000"
           last_edit_date="Stub1/1/2002"
           comments={[
