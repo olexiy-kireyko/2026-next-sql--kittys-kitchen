@@ -14,7 +14,7 @@ export default function RecipePhotoVideoBlock({
   images,
 }: RecipePhotoVideoBlockProps) {
   return (
-    <section>
+    <section className="flex flex-col gap-6">
       {videoURL && (
         <div className="flex gap-4">
           <LuVideo />

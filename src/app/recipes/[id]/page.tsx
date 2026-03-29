@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Recipe from "../../components/recipe";
 import Button from "../../components/button";
 
@@ -72,6 +71,7 @@ export default function Page({ params }: PageProps) {
           last_edit_date="Stub1/1/2002"
           comments={[
             {
+              id: "asdf",
               author_first_name: "Stub Adam",
               author_last_name: "Doe",
               author_imageURL: "/temporary/users-images/cat.png",
@@ -80,6 +80,7 @@ export default function Page({ params }: PageProps) {
               pins: 3,
             },
             {
+              id: "asdv",
               author_first_name: "Stub Adam",
               author_last_name: "Doe",
               author_imageURL: "/temporary/users-images/cat.png",

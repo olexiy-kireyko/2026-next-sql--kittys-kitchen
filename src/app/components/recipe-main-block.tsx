@@ -43,7 +43,10 @@ export default function RecipeMainBlock({
   return (
     <section className="flex justify-between">
       <div className="flex flex-col gap-3">
-        <ButtonFavourite id={id} onClick={isUserFavouriteHandler} />
+        <ButtonFavourite
+          isUserFavourite={is_user_favourite}
+          onClick={isUserFavouriteHandler}
+        />
         <p className="text-zinc-200 text-3xl">
           {id}
           {title}
@@ -58,6 +61,7 @@ export default function RecipeMainBlock({
           creating_date={creating_date}
           last_edit_date={last_edit_date}
           avg_pins={avg_pins}
+          isComment={false}
         />
         <div className="relative rounded-sm overflow-hidden h-100 w-140">
           <Image

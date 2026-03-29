@@ -1,6 +1,7 @@
 import Image from "next/image";
 import RecipeMainBlock from "./recipe-main-block";
 import RecipePhotoVideoBlock from "./recipe-photo-video-block";
+import RecipeCommentsBlock from "./recipe-comment-block";
 
 export interface IngredientsProps {
   ingredient_id: string;
@@ -10,6 +11,7 @@ export interface IngredientsProps {
 }
 
 export interface CommentProps {
+  id: string;
   author_first_name: string;
   author_last_name: string;
   author_imageURL: string;
@@ -68,7 +70,7 @@ export default function Recipe({
         comments={comments}
       />
       <RecipePhotoVideoBlock videoURL={videoURL} images={images} />
-      {comments && <p>comments???</p>}
+      <RecipeCommentsBlock comments={comments} />
     </div>
   );
 }
